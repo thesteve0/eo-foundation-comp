@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0db9e5ab-f300-47cc-9471-35ee05789718" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/eo-foundation-comp.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eo-foundation-comp.ipr" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eo-foundation-comp.iws" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="0db9e5ab-f300-47cc-9471-35ee05789718" name="Changes" comment="getting there. I think I should just make some chips and try to bring them into fiftyone" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,9 +66,22 @@
       <option name="presentableId" value="Default" />
       <updated>1737408182005</updated>
     </task>
+    <task id="LOCAL-00001" summary="getting there. I think I should just make some chips and try to bring them into fiftyone">
+      <option name="closed" value="true" />
+      <created>1737416026183</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1737416026183</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="getting there. I think I should just make some chips and try to bring them into fiftyone" />
+    <option name="LAST_COMMIT_MESSAGE" value="getting there. I think I should just make some chips and try to bring them into fiftyone" />
   </component>
 </project>
