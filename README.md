@@ -2,8 +2,9 @@
 Code and simple doc comparing different foundational earth observation vision models
 
 ## ToDo
+0. upsample the lulc to 30x30m. Visual analysis in Qgis implies they exactly align
 0. Install all the dependencies in the venv
-1. Chip creation - can be used in both models.Chips the images AND the LULC using this code from Clay:
+1. Chip creation - can be used in both models. Chips the images AND the LULC using this code from Clay:
 https://github.com/Clay-foundation/model/blob/main/finetune/segment/preprocess_data.py
 
 2. Create the correct metadata file for Clay: https://github.com/Clay-foundation/model/blob/main/configs/segment_chesapeake.yaml
