@@ -13,6 +13,8 @@ https://www.bayarealands.org/maps-data/
 
 Notes:
 ------
+This only creates serialized numpy representations of the chip and not actual images
+
 
 We will create chips of size `224 x 224` to feed them to the model
    Example:
@@ -57,6 +59,7 @@ def read_and_chip(file_path, chip_size, output_dir):
                     f"{Path(file_path).stem}_chip_{chip_number}.npy",
                 )
                 np.save(chip_path, chip)
+
                 chip_number += 1
 
 
@@ -83,7 +86,7 @@ def main():
         - chip_size: Size of the square chips.
     """
     if len(sys.argv) != 4:  # noqa: PLR2004
-        print("Usage: python script.py <data_dir> <output_dir> <chip_size>")
+        print("Usage: python preprocess_data.py <data_dir> <output_dir> <chip_size>")
         sys.exit(1)
 
     data_dir = Path(sys.argv[1])
@@ -96,11 +99,13 @@ def main():
     # train_label_paths = list((data_dir / "train").glob("*_lc.tif"))
     # val_label_paths = list((data_dir / "val").glob("*_lc.tif"))
 
+    image_paths = list((data_dir / "images").glob("*.tif"))
+    ground_trurh_paths = list((data_dir / "ground-truth").glob("*.tif"))
+
+
     # This just needs 2 entries, one for labels and one for images
-    process_files(train_image_paths, output_dir / "train/chips", chip_size)
-    process_files(val_image_paths, output_dir / "val/chips", chip_size)
-    process_files(train_label_paths, output_dir / "train/labels", chip_size)
-    process_files(val_label_paths, output_dir / "val/labels", chip_size)
+    process_files(image_paths, output_dir / "image-chips", chip_size)
+    process_files(ground_trurh_paths, output_dir / "ground-truth-chips", chip_size)
 
 
 if __name__ == "__main__":

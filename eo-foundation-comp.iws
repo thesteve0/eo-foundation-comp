@@ -5,14 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0db9e5ab-f300-47cc-9471-35ee05789718" name="Changes" comment="more anlysis">
+      <change afterPath="$PROJECT_DIR$/make_chip_images.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eo-foundation-comp.iws" beforeDir="false" afterPath="$PROJECT_DIR$/eo-foundation-comp.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getting-and-preprocess-gis.md" beforeDir="false" afterPath="$PROJECT_DIR$/getting-and-preprocess-gis.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocess_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess_data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,12 +30,12 @@
     &quot;assignee&quot;: &quot;thesteve0&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/thesteve0/eo-foundation-comp.git",
-    "accountId": "db4b3aa7-f854-499e-906e-cb965a0d20d6"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/thesteve0/eo-foundation-comp.git&quot;,
+    &quot;accountId&quot;: &quot;db4b3aa7-f854-499e-906e-cb965a0d20d6&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -104,16 +111,5 @@
     <MESSAGE value="getting there. I think I should just make some chips and try to bring them into fiftyone" />
     <MESSAGE value="more anlysis" />
     <option name="LAST_COMMIT_MESSAGE" value="more anlysis" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/preprocess_data.py</url>
-          <line>21</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
