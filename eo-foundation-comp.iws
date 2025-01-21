@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0db9e5ab-f300-47cc-9471-35ee05789718" name="Changes" comment="more anlysis">
-      <change afterPath="$PROJECT_DIR$/preprocess_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eo-foundation-comp.iws" beforeDir="false" afterPath="$PROJECT_DIR$/eo-foundation-comp.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getting-and-preprocess-gis.md" beforeDir="false" afterPath="$PROJECT_DIR$/getting-and-preprocess-gis.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocess_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess_data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,12 +23,12 @@
     &quot;assignee&quot;: &quot;thesteve0&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:thesteve0/eo-foundation-comp.git&quot;,
-    &quot;accountId&quot;: &quot;3fc40951-3a29-4780-9890-f941d998a142&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/thesteve0/eo-foundation-comp.git",
+    "accountId": "db4b3aa7-f854-499e-906e-cb965a0d20d6"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -55,8 +56,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
       </set>
     </attachedChunks>
   </component>
@@ -109,7 +110,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/preprocess_data.py</url>
-          <line>47</line>
+          <line>21</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

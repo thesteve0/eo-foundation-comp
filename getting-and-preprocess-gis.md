@@ -1,8 +1,16 @@
+## Study area definition
+Used QGIS to create study area and test area polygons. Used the same projection as the imagery. Stored in a geopackage but then
+exported each into geojson so it could be used in the image query search
+
 ## Downloading images
 You get a TIFF per band requested
 ```shell
 python HLS_SuPER.py -roi ~/data/remote-sensing-comparison/test-area/test_area.geojson  -start 2024-09-01 -end 2024-11-10 -bands BLUE,GREEN,RED,NIR1,SWIR1,SWIR2,FMASK -qf True -dir  ~/data/remote-sensing-comparison/test-area
 ```
+## LULC TIFF 
+From  Conservation Lands Network
+Using FULL CLN 2.0 GIS DATABASE (Version 2.0.1)
+https://www.bayarealands.org/maps-data/
 
 ## Upsampling the lulc to 30x30m
 
@@ -24,4 +32,6 @@ python HLS_SuPER.py -roi ~/data/remote-sensing-comparison/test-area/test_area.ge
     2. reference layer is one of the images
 3. THe resulting image is the image to be used in analysis
 
-Finished with the test area
+Both test and full study are are upsampled and aligned
+
+Time to chip running the pre_process_data.py

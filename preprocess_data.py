@@ -7,43 +7,17 @@ https://github.com/Clay-foundation/model/blob/main/finetune/segment/preprocess_d
 
 I am modifying the notes below to fit this current project.
 
-This script processes GeoTIFF files from NASA HLS and an LULC TIFF from   @@TODO 
-
-Dataset Source:
----------------
-Chesapeake CVPR data from LILA:
-https://lila.science/datasets/chesapeakelandcover
-
-For this experiment, we will use images from NY.
+This script processes GeoTIFF files from NASA HLS and an LULC TIFF from  Conservation Lands Network.
+Using FULL CLN 2.0 GIS DATABASE (Version 2.0.1)
+https://www.bayarealands.org/maps-data/
 
 Notes:
 ------
-1. Only copy *_lc.tif & *_naip-new.tif files that we will use for our
-segmentation downstream task.
-   Using s5cmd for this: https://github.com/peak/s5cmd
-   - Train:
-   s5cmd cp \
-        --no-sign-request \
-        --include "*_lc.tif" \
-        --include "*_naip-new.tif" \
-        "s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/lcmcvpr2019/cvpr_chesapeake_landcover/ny_1m_2013_extended-debuffered-train_tiles/*" \
-        data/cvpr/files/train/
-   - Val:
-   s5cmd cp \
-        --no-sign-request \
-        --include "*_lc.tif" \
-        --include "*_naip-new.tif" \
-        "s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/lcmcvpr2019/cvpr_chesapeake_landcover/ny_1m_2013_extended-debuffered-val_tiles/*" \
-        data/cvpr/files/val/
 
-2. We will create chips of size `224 x 224` to feed them to the model, feel
-free to experiment with other chip sizes as well.
-   Run the script as follows:
-   python preprocess_data.py <data_dir> <output_dir> <chip_size>
-
+We will create chips of size `224 x 224` to feed them to the model
    Example:
    python preprocess_data.py data/cvpr/files data/cvpr/ny 224
-"""  # noqa E501
+"""
 
 import os
 import sys
@@ -116,11 +90,13 @@ def main():
     output_dir = Path(sys.argv[2])
     chip_size = int(sys.argv[3])
 
-    train_image_paths = list((data_dir / "train").glob("*_naip-new.tif"))
-    val_image_paths = list((data_dir / "val").glob("*_naip-new.tif"))
-    train_label_paths = list((data_dir / "train").glob("*_lc.tif"))
-    val_label_paths = list((data_dir / "val").glob("*_lc.tif"))
+    # I am going to process all the files and then split into train and validation using fiftyone
+    # train_image_paths = list((data_dir / "train").glob("*_naip-new.tif"))
+    # val_image_paths = list((data_dir / "val").glob("*_naip-new.tif"))
+    # train_label_paths = list((data_dir / "train").glob("*_lc.tif"))
+    # val_label_paths = list((data_dir / "val").glob("*_lc.tif"))
 
+    # This just needs 2 entries, one for labels and one for images
     process_files(train_image_paths, output_dir / "train/chips", chip_size)
     process_files(val_image_paths, output_dir / "val/chips", chip_size)
     process_files(train_label_paths, output_dir / "train/labels", chip_size)
