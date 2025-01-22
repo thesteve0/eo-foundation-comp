@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0db9e5ab-f300-47cc-9471-35ee05789718" name="Changes" comment="more anlysis">
-      <change afterPath="$PROJECT_DIR$/make_chip_images.py" afterDir="false" />
+    <list default="true" id="0db9e5ab-f300-47cc-9471-35ee05789718" name="Changes" comment="some more work done but mostly still thinking">
       <change beforePath="$PROJECT_DIR$/eo-foundation-comp.iws" beforeDir="false" afterPath="$PROJECT_DIR$/eo-foundation-comp.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocess_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make_chip_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_chip_images.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737470117828</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="some more work done but mostly still thinking">
+      <option name="closed" value="true" />
+      <created>1737492031362</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737492031362</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,6 +117,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="getting there. I think I should just make some chips and try to bring them into fiftyone" />
     <MESSAGE value="more anlysis" />
-    <option name="LAST_COMMIT_MESSAGE" value="more anlysis" />
+    <MESSAGE value="some more work done but mostly still thinking" />
+    <option name="LAST_COMMIT_MESSAGE" value="some more work done but mostly still thinking" />
   </component>
 </project>

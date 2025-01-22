@@ -51,3 +51,6 @@ https://huggingface.co/datasets/ibm-nasa-geospatial/multi-temporal-crop-classifi
 
 Notebook
 https://github.com/NASA-IMPACT/Prithvi-EO-2.0/blob/main/examples/example_multitemporalcrop.ipynb
+
+## Spectral information in HLS data
+https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/#hls-spectral-bands
