@@ -54,3 +54,9 @@ https://github.com/NASA-IMPACT/Prithvi-EO-2.0/blob/main/examples/example_multite
 
 ## Spectral information in HLS data
 https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/#hls-spectral-bands
+
+## Understanding band combinations
+
+https://fsapps.nwcg.gov/gtac/CourseDownloads/Reimbursables/FY20/FHM/Day2/Track3/BandComboCheatSheet.pdf
+
+https://gisgeography.com/landsat-8-bands-combinations/
