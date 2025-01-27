@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0db9e5ab-f300-47cc-9471-35ee05789718" name="Changes" comment="end of day">
-      <change afterPath="$PROJECT_DIR$/add_segment_mask.py" afterDir="false" />
+    <list default="true" id="0db9e5ab-f300-47cc-9471-35ee05789718" name="Changes" comment="initial import works for fiftyone even after chipping">
       <change beforePath="$PROJECT_DIR$/eo-foundation-comp.iws" beforeDir="false" afterPath="$PROJECT_DIR$/eo-foundation-comp.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make_chip_images.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocess_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/single_to_multi_geotiff.py" beforeDir="false" afterPath="$PROJECT_DIR$/single_to_multi_geotiff.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,32 +43,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.add_segment_mask.executor": "Run",
-    "Python.preprocess_data.executor": "Run",
-    "Python.single_to_multi_geotiff.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/spousty/git/eo-foundation-comp/preprocess_data.py",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.add_segment_mask.executor&quot;: &quot;Run&quot;,
+    &quot;Python.preprocess_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.single_to_multi_geotiff.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/spousty/git/eo-foundation-comp/preprocess_data.py&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python",
-      "TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;,
+      &quot;TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$APPLICATION_CONFIG_DIR$/scratches" />
@@ -187,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737756144881</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="initial import works for fiftyone even after chipping">
+      <option name="closed" value="true" />
+      <created>1737943611806</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1737943611806</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,7 +216,8 @@
     <MESSAGE value="plan B worked out and now to code" />
     <MESSAGE value="no plan B." />
     <MESSAGE value="end of day" />
-    <option name="LAST_COMMIT_MESSAGE" value="end of day" />
+    <MESSAGE value="initial import works for fiftyone even after chipping" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial import works for fiftyone even after chipping" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

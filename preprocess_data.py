@@ -107,16 +107,17 @@ def read_and_chip(file_path, chip_size, output_dir, fiftyone_dataset):
                         continue
 
                     # Now populate the dataset
-                    create_and_add_sample(tiff_path=tif_path,png_dict=created_pngs, dataset=fiftyone_dataset)
+                    create_and_add_sample(tiff_path=tif_path,png_dict=created_pngs, chip_path=chip_path, dataset=fiftyone_dataset)
 
                 chip_number += 1
 
 
-def create_and_add_sample(tiff_path: str, png_dict: dict, dataset: fo.Dataset) -> None:
+def create_and_add_sample(tiff_path: str, png_dict: dict, chip_path: str, dataset: fo.Dataset) -> None:
     sample = fo.Sample(filepath=tiff_path)
     sample["rgb_display"] = png_dict["rgb_display"]
     sample["fcir_display"] = png_dict["fcir_display"]
     sample["sveg_display"] = png_dict["sveg_display"]
+    sample["chip_path"] = chip_path
     dataset.add_sample(sample)
 
 
