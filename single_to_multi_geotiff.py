@@ -3,6 +3,7 @@ import rasterio
 import numpy as np
 import fiftyone as fo
 from rasterio.transform import xy
+from pyproj import Transformer
 
 '''
 This script is specifically for dealing with HLS data which comes back one band at a time. It is also geared towards just
@@ -53,109 +54,134 @@ They should all be in the same directory. I think we should probably also make t
 '''
 
 
-input_dir: str = './images'
-output_dir: str = './multi-band-images'
+input_dir: str = '/home/spousty/data/remote-sensing-comparison/test-area/images'
+output_dir: str = '/home/spousty/data/remote-sensing-comparison/test-area/multi-band-images'
 
-# Bands in order: BLUE, GREEN, RED, NIR, SWIR1, SWIR2
+# Bands in order: BLUE, GREEN, RED, NIR1, SWIR1, SWIR2
 BAND_ORDER: list[str] = ['BLUE', 'GREEN', 'RED', 'NIR1', 'SWIR1', 'SWIR2']
-
-
-def process_multiband_images() -> None:
-    image_groups: dict[str, list[str]] = {}
-    for filename in os.listdir(input_dir):
-        base_name = filename[:22]
-        if base_name not in image_groups:
-            image_groups[base_name] = []
-        image_groups[base_name].append(filename)
-
-    os.makedirs(output_dir, exist_ok=True)
-
-    # Create FiftyOne dataset
-    dataset = fo.Dataset("rs_full_images")
-
-    for base_name, band_files in image_groups.items():
-        sorted_files = sorted(band_files, key=lambda f: BAND_ORDER.index(f.split('.')[-2]))
-
-        multiband_path = os.path.join(output_dir, f'{base_name}.subset.tif')
-        merge_bands(sorted_files, multiband_path)
-
-        # Create PNGs
-        png_configs = [
-            ('rgb', [1, 2, 3])
-        ]
-
-        # Prepare sample metadata
-        sample_metadata = {}
-        for png_suffix, bands in png_configs:
-            png_path = multiband_path.replace('.subset.tif', f'.subset.{png_suffix}.png')
-            create_png(multiband_path, png_suffix, bands)
-            sample_metadata[f"{png_suffix}_display"] = png_path
-
-        # Get geospatial information
-        with rasterio.open(multiband_path) as src:
-            # Get corner coordinates
-            transform = src.transform
-            height, width = src.height, src.width
-
-            # Get center coordinates
-            center_lon, center_lat = xy(transform, height // 2, width // 2)
-
-            # Create FiftyOne sample
-            # Create FiftyOne sample with geolocation
-            sample = fo.Sample(
-                filepath=multiband_path,
-                location=fo.GeoLocation(point=[center_lon, center_lat])
-            )
-
-            # Add PNG display paths
-            for key, path in sample_metadata.items():
-                sample[key] = path
-
-            dataset.add_sample(sample)
-
-    dataset.save()
 
 
 def merge_bands(band_files: list[str], output_path: str) -> None:
     bands = []
     with rasterio.open(os.path.join(input_dir, band_files[0])) as first_src:
-        # Use first band's metadata as template
         profile = first_src.profile.copy()
 
-        # Read bands for stacking
         for band_file in band_files:
             with rasterio.open(os.path.join(input_dir, band_file)) as src:
                 bands.append(src.read(1))
 
-    # Stack bands
     stacked_bands = np.stack(bands)
 
-    # Update profile for multiband image
     profile.update(
         count=len(bands),
-        dtype=stacked_bands.dtype
+        dtype=stacked_bands.dtype,
+        driver='GTiff',
+        compress='lzw'  # Add compression to ensure proper writing
     )
 
-    # Write multiband image with original geographic metadata
     with rasterio.open(output_path, 'w', **profile) as dst:
         dst.write(stacked_bands)
+        dst.close()  # Explicitly close
 
 
 def create_png(multiband_path: str, png_suffix: str, bands_to_use: list[int]) -> None:
-    with rasterio.open(multiband_path) as src:
-        # Select specified bands
-        selected_bands = src.read(bands_to_use)
+    # Ensure file exists and has non-zero size
+    if not os.path.exists(multiband_path) or os.path.getsize(multiband_path) == 0:
+        raise ValueError(f"Invalid TIF file: {multiband_path}")
 
-        # Normalize to 0-255 range
-        normalized = (((selected_bands - selected_bands.min()) / (
-                    selected_bands.max() - selected_bands.min())) * 255).astype(np.uint8)
+    with rasterio.open(multiband_path) as src:
+        # Verify we can read the bands
+        selected_bands = []
+        for band_idx in bands_to_use:
+            band_data = src.read(band_idx)
+            if band_data is None or np.all(np.isnan(band_data)):
+                raise ValueError(f"Invalid band data for band {band_idx}")
+            selected_bands.append(band_data)
+
+        selected_bands = np.array(selected_bands)
+
+        # Normalize each band separately
+        normalized = np.zeros_like(selected_bands, dtype=np.uint8)
+        for i in range(len(bands_to_use)):
+            band = selected_bands[i]
+            if np.all(np.isnan(band)):
+                raise ValueError(f"Band {i} contains all NaN values")
+            p2, p98 = np.percentile(band[~np.isnan(band)], (2, 98))
+            normalized[i] = np.clip(((band - p2) / (p98 - p2) * 255), 0, 255).astype(np.uint8)
 
         png_path = multiband_path.replace('.subset.tif', f'.subset.{png_suffix}.png')
 
-        # Write PNG
-        with rasterio.open(png_path, 'w', driver='PNG', width=src.width, height=src.height,
-                           count=len(bands_to_use), dtype=np.uint8) as png:
+        profile = src.profile.copy()
+        profile.update(
+            driver='PNG',
+            dtype=np.uint8,
+            count=len(bands_to_use),
+            compress=None
+        )
+
+        with rasterio.open(png_path, 'w', **profile) as png:
             png.write(normalized)
+            png.close()
+
+
+def process_multiband_images() -> None:
+    image_groups: dict[str, list[str]] = {}
+    for filename in os.listdir(input_dir):
+        if filename.endswith('.tif') and not filename.__contains__("FMASK"):
+            base_name = filename[:22]
+            if base_name not in image_groups:
+                image_groups[base_name] = []
+            image_groups[base_name].append(filename)
+
+    os.makedirs(output_dir, exist_ok=True)
+    dataset = fo.Dataset("rs_full_images", overwrite=True, persistent=True)
+
+    for base_name, band_files in image_groups.items():
+        sorted_files = sorted(band_files, key=lambda f: BAND_ORDER.index(f.split('.')[-3]))
+        multiband_path = os.path.join(output_dir, f'{base_name}.subset.tif')
+
+        # Create and write the multiband tiff
+        merge_bands(sorted_files, multiband_path)
+
+        # Verify file was written
+        if not os.path.exists(multiband_path) or os.path.getsize(multiband_path) < 1000:
+            raise ValueError(f"TIF file not written correctly: {multiband_path}")
+
+        # Create the PNG
+        try:
+            create_png(multiband_path, 'rgb', [3, 2, 1])  # Adjusted band indices to [3,2,1] for RGB
+            create_png(multiband_path, 'fcir', [4, 3, 2])
+            create_png(multiband_path, 'sveg', [5, 4, 3])
+
+
+        except Exception as e:
+            print(f"Error creating PNG for {base_name}: {str(e)}")
+            continue
+
+        # Get coordinates for the sample and project to 4326 (DD, wgs84)
+        with rasterio.open(multiband_path) as src:
+            transformer = Transformer.from_crs("EPSG:32610", "EPSG:4326")
+            transform = src.transform
+            height, width = src.height, src.width
+            center_lon, center_lat = xy(transform, height // 2, width // 2)
+            center_lat, center_lon = transformer.transform(center_lat, center_lon)
+
+
+
+        # Create FiftyOne sample
+        sample = fo.Sample(
+            filepath=multiband_path,
+            location=fo.GeoLocation(point=[center_lon, center_lat])
+        )
+        sample["rgb_display"] = multiband_path.replace('.subset.tif', '.subset.rgb.png')
+        sample["fcir_display"] = multiband_path.replace('.subset.tif', '.subset.fcir.png')
+        sample["sveg_display"] = multiband_path.replace('.subset.tif', '.subset.sveg.png')
+        dataset.add_sample(sample)
+
+    dataset.app_config.media_fields = ["filepath", "rgb_display", "fcir_display", "sveg_display"]
+    dataset.app_config.grid_media_field = "rgb_display"
+    dataset.save()
+
 
 if __name__ == '__main__':
     process_multiband_images()
