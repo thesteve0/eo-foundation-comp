@@ -11,10 +11,14 @@ To make a custom color scheme
 https://docs.voxel51.com/user_guide/app.html#color-schemes-in-python
 https://docs.voxel51.com/api/fiftyone.core.odm.dataset.html#fiftyone.core.odm.dataset.ColorScheme
 
+
+
 '''
 
+
+
 DATASET_NAME = "rs_chip_images"
-SEGMENT_MASK_PATH = "/home/spousty/data/remote-sensing-comparison/test-area/ground-truth-chips/test_area_lulc_30m_align_"
+SEGMENT_MASK_PATH = "/home/spousty/data/remote-sensing-comparison/ground-truth-chips/lulc_30m_align_"
 
 def load_dataset_and_add_segment_mask(dataset):
     if dataset.has_field("ground_truth"):
@@ -26,9 +30,9 @@ def load_dataset_and_add_segment_mask(dataset):
     )
 
     # This image
-    # '/home/spousty/data/remote-sensing-comparison/test-area/multi-band-image-chips/HLS.L30.T10SEG.2024297.subset_chip_0.tif'
+    # '/home/spousty/data/remote-sensing-comparison/multi-band-image-chips/HLS.L30.T10SEG.2024297.subset_chip_0.tif'
     # Should get this mask
-    # /home/spousty/data/remote-sensing-comparison/test-area/ground-truth-chips/test_area_lulc_30m_align_chip_0.npy
+    # /home/spousty/data/remote-sensing-comparison/test-area/ground-truth-chips/HLS.L30.T10SEG.2024297.subset_lulc_chip_0.png
 
     # Which means replace this:
     # /home/spousty/data/remote-sensing-comparison/test-area/multi-band-image-chips/HLS.L30.T10SEG.2024297.subset_
@@ -40,9 +44,9 @@ def load_dataset_and_add_segment_mask(dataset):
     segmentation_arrays = []
     paths = dataset.values("filepath")
     for path in paths:
-        chip_number = re.search(r'chip_(\d+)', path).group(0)
-        lulc_np = SEGMENT_MASK_PATH + chip_number + ".npy"
-        lulc_png = SEGMENT_MASK_PATH + chip_number + ".png"
+        gt_path = path.replace("subset_chip", "subset_lulc_chip").replace("multi-band-image-chips", "ground-truth-chips")
+        lulc_np = gt_path.replace(".tif", ".npy")
+        lulc_png = gt_path.replace(".tif", ".png")
 
         image_as_np = np.load(lulc_np).astype("uint8")
 

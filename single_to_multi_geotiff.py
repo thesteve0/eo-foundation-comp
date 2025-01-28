@@ -54,8 +54,8 @@ They should all be in the same directory. I think we should probably also make t
 '''
 
 
-input_dir: str = '/home/spousty/data/remote-sensing-comparison/test-area/images'
-output_dir: str = '/home/spousty/data/remote-sensing-comparison/test-area/multi-band-images'
+input_dir: str = '/home/spousty/data/remote-sensing-comparison/images'
+output_dir: str = '/home/spousty/data/remote-sensing-comparison/multi-band-images'
 
 # Bands in order: BLUE, GREEN, RED, NIR1, SWIR1, SWIR2
 BAND_ORDER: list[str] = ['BLUE', 'GREEN', 'RED', 'NIR1', 'SWIR1', 'SWIR2']
