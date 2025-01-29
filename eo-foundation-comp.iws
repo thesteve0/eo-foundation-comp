@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0db9e5ab-f300-47cc-9471-35ee05789718" name="Changes" comment="a little update for when we do prediction">
-      <change afterPath="$PROJECT_DIR$/create_train_val_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/add_segment_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/add_segment_mask.py" afterDir="false" />
+    <list default="true" id="0db9e5ab-f300-47cc-9471-35ee05789718" name="Changes" comment="ok data should be ready for models and display in fiftyone">
+      <change afterPath="$PROJECT_DIR$/np_checker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seg_mask_metawork.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/add_segment_mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/3_add_segment_mask.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_train_val_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/4_create_train_val_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eo-foundation-comp.iws" beforeDir="false" afterPath="$PROJECT_DIR$/eo-foundation-comp.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocess_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/single_to_multi_geotiff.py" beforeDir="false" afterPath="$PROJECT_DIR$/single_to_multi_geotiff.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocess_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/2_preprocess_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/single_to_multi_geotiff.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_single_to_multi_geotiff.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,33 +48,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.add_segment_mask.executor": "Run",
-    "Python.create_train_val_test.executor": "Run",
-    "Python.preprocess_data.executor": "Run",
-    "Python.single_to_multi_geotiff.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/spousty/git/eo-foundation-comp/preprocess_data.py",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.add_segment_mask.executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_train_val_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.np_checker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.preprocess_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.seg_mask_metawork.executor&quot;: &quot;Run&quot;,
+    &quot;Python.single_to_multi_geotiff.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/spousty/git/eo-foundation-comp/preprocess_data.py&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python",
-      "TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;,
+      &quot;TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$APPLICATION_CONFIG_DIR$/scratches" />
@@ -104,7 +108,7 @@
           <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
         </ENTRIES>
       </EXTENSION>
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/preprocess_data.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/2_preprocess_data.py" />
       <option name="PARAMETERS" value="$USER_HOME$/data/remote-sensing-comparison/ $USER_HOME$/data/remote-sensing-comparison/ 224" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -203,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738011177027</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ok data should be ready for models and display in fiftyone">
+      <option name="closed" value="true" />
+      <created>1738086983057</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1738086983057</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,23 +242,41 @@
     <MESSAGE value="end of day" />
     <MESSAGE value="initial import works for fiftyone even after chipping" />
     <MESSAGE value="a little update for when we do prediction" />
-    <option name="LAST_COMMIT_MESSAGE" value="a little update for when we do prediction" />
+    <MESSAGE value="ok data should be ready for models and display in fiftyone" />
+    <option name="LAST_COMMIT_MESSAGE" value="ok data should be ready for models and display in fiftyone" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/create_train_val_test.py</url>
+          <url>file://$PROJECT_DIR$/4_create_train_val_test.py</url>
           <line>71</line>
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/np_checker.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/seg_mask_metawork.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/seg_mask_metawork.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/eo_foundation_comp$single_to_multi_geotiff.coverage" NAME="single_to_multi_geotiff Coverage Results" MODIFIED="1738025616367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/eo_foundation_comp$create_train_val_test.coverage" NAME="create_train_val_test Coverage Results" MODIFIED="1738086465292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/eo_foundation_comp$preprocess_data.coverage" NAME="preprocess_data Coverage Results" MODIFIED="1738037473808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/eo_foundation_comp$create_train_val_test.coverage" NAME="create_train_val_test Coverage Results" MODIFIED="1738086727803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/eo_foundation_comp$preprocess_data.coverage" NAME="preprocess_data Coverage Results" MODIFIED="1738130155680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/eo_foundation_comp$seg_mask_metawork.coverage" NAME="seg_mask_metawork Coverage Results" MODIFIED="1738131656712" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/eo_foundation_comp$np_checker.coverage" NAME="np_checker Coverage Results" MODIFIED="1738103544405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/eo_foundation_comp$add_segment_mask.coverage" NAME="add_segment_mask Coverage Results" MODIFIED="1738048125439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
